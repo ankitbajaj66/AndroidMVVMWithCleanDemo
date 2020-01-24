@@ -20,7 +20,7 @@ class PostsDetailsViewModel(
     }
 
     fun getPosts() {
-        getPosts.observable().flatMap {
+        addDisposable(getPosts.observable().flatMap {
             postMapper.observable(it)
         }.subscribe({ posts ->
 
@@ -37,7 +37,7 @@ class PostsDetailsViewModel(
                 isEmpty = true,
                 posts = null
             )
-        })
+        }))
     }
 
 }

@@ -7,13 +7,16 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.runners.MockitoJUnitRunner
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.androidmvvmwithcleandemo.post.domain.PostRepository
+import com.example.androidmvvmwithcleandemo.post.domain.common.TestTransformer
+import com.example.androidmvvmwithcleandemo.post.domain.entity.PostEntity
+import io.reactivex.Observable
 import org.junit.Rule
 import org.junit.rules.TestRule
 
@@ -28,8 +31,9 @@ class PostsDetailsViewModelTest {
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
 
+
     @Mock
-    private lateinit var getPosts: GetPosts
+    private lateinit var postRepository: PostRepository
 
     @Mock
     private lateinit var observer: Observer<PostsViewState>
@@ -37,7 +41,9 @@ class PostsDetailsViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        postsDetailsViewModel = PostsDetailsViewModel(getPosts, postEntityPostMapper)
+        val getPopularMoviesUseCase = GetPosts(TestTransformer(), postRepository)
+
+        postsDetailsViewModel = PostsDetailsViewModel(getPopularMoviesUseCase, postEntityPostMapper)
         postsDetailsViewModel.viewState.observeForever(observer)
     }
 
@@ -54,5 +60,24 @@ class PostsDetailsViewModelTest {
 
     @Test
     fun getPosts() {
+        val postEntity = generatePostEntityList()
+        Mockito.`when`(postRepository.getPosts()).thenReturn(Observable.just(postEntity))
+
+        val posts = postEntity.map { postEntityPostMapper.mapFrom(it) }
+        postsDetailsViewModel.getPosts()
+        Mockito.verify(observer).onChanged(PostsViewState(isLoading = false, isEmpty = false, posts = posts))
+    }
+
+    fun generatePostEntityList(): List<PostEntity> {
+        return (0..4).map { getTestPostEntity(it) }
+    }
+
+    fun getTestPostEntity(id: Int): PostEntity {
+        return PostEntity(
+            id = id,
+            title = "Post$id",
+            body = "PostBody$id",
+            userId = id
+        )
     }
 }
