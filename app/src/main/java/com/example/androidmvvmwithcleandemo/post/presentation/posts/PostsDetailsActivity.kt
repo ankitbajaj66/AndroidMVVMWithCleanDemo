@@ -77,8 +77,9 @@ class PostsDetailsActivity : AppCompatActivity() {
             }
         })
 
+
         btn_get_posts.setOnClickListener {
-            viewModel.getPosts()
+            viewModel.onLoginClicked(edt_username.text.toString(), edt_password.text.toString())
         }
     }
 }

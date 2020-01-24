@@ -1,6 +1,7 @@
 package com.example.androidmvvmwithcleandemo.post.presentation.posts
 
 import androidx.lifecycle.MutableLiveData
+import com.example.androidmvvmwithcleandemo.post.common.utils.Validator
 import com.example.androidmvvmwithcleandemo.post.domain.common.Mapper
 import com.example.androidmvvmwithcleandemo.post.domain.entity.PostEntity
 import com.example.androidmvvmwithcleandemo.post.domain.usecase.GetPosts
@@ -32,12 +33,21 @@ class PostsDetailsViewModel(
             viewState.value = newViewState
 
         }, {
-            viewState.value?.copy(
+            val newViewState = viewState.value?.copy(
                 isLoading = false,
                 isEmpty = true,
                 posts = null
             )
+            viewState.value = newViewState
         }))
+    }
+
+    fun onLoginClicked(username: String, password: String) {
+        if (Validator.isUserNameValid(username) && Validator.isPasswordValid(password))
+        {
+            getPosts()
+        }
+
     }
 
 }

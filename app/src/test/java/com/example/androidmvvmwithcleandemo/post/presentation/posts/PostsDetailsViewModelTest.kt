@@ -13,6 +13,7 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.runners.MockitoJUnitRunner
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.androidmvvmwithcleandemo.post.common.utils.Validator
 import com.example.androidmvvmwithcleandemo.post.domain.PostRepository
 import com.example.androidmvvmwithcleandemo.post.domain.common.TestTransformer
 import com.example.androidmvvmwithcleandemo.post.domain.entity.PostEntity
@@ -59,13 +60,28 @@ class PostsDetailsViewModelTest {
     }
 
     @Test
-    fun getPosts() {
+    fun TestValidUserNameAndPassValidWithSuccess() {
+        val username = "ankitbajaj1989@gmail.com"
+        val password = "12345"
         val postEntity = generatePostEntityList()
         Mockito.`when`(postRepository.getPosts()).thenReturn(Observable.just(postEntity))
 
         val posts = postEntity.map { postEntityPostMapper.mapFrom(it) }
-        postsDetailsViewModel.getPosts()
-        Mockito.verify(observer).onChanged(PostsViewState(isLoading = false, isEmpty = false, posts = posts))
+        postsDetailsViewModel.onLoginClicked(username, password)
+        Mockito.verify(observer)
+            .onChanged(PostsViewState(isLoading = false, isEmpty = false, posts = posts))
+    }
+
+    @Test
+    fun TestValidUserNameAndPassValidWithFail() {
+        val username = "ankitbajaj1989@gmail.com"
+        val password = "12345"
+        val throwable = Throwable("ERROR!")
+        Mockito.`when`(postRepository.getPosts()).thenReturn(Observable.error(throwable))
+
+        postsDetailsViewModel.onLoginClicked(username, password)
+        Mockito.verify(observer)
+            .onChanged(PostsViewState(isLoading = false, isEmpty = true, posts = null))
     }
 
     fun generatePostEntityList(): List<PostEntity> {
