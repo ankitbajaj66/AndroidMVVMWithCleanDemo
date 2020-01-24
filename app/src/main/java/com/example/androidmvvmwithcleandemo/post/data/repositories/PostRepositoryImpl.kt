@@ -10,7 +10,14 @@ class PostRepositoryImpl private constructor(
 ) :
     PostRepository {
 
+
     companion object {
+
+        fun clear()
+        {
+            instance = null
+        }
+
         @Volatile
         private var instance: PostRepositoryImpl? = null
 
