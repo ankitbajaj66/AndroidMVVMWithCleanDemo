@@ -5,7 +5,9 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+        maven {
+            url "https://github.com/wickie73/mockito4kotlin.annotation.git"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.2'

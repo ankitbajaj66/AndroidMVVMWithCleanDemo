@@ -2,6 +2,7 @@ package com.example.androidmvvmwithcleandemo.post.domain.usecase
 
 import com.example.androidmvvmwithcleandemo.post.domain.PostRepository
 import com.example.androidmvvmwithcleandemo.post.domain.common.Transformer
+import com.example.androidmvvmwithcleandemo.post.domain.common.TransformerRx
 import com.example.androidmvvmwithcleandemo.post.domain.entity.PostEntity
 import io.reactivex.Observable
 
