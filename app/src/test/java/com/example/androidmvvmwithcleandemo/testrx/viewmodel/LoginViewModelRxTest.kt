@@ -40,15 +40,15 @@ class LoginViewModelRxTest {
         var schedulerProvider = TrampolineSchedulerProvider()
         MockitoAnnotations.initMocks(this)
         loginViewModelRx = LoginViewModelRx(loginRepoRx, schedulerProvider)
-        loginViewModelRx.loginViewState.observeForever { observer }
+        loginViewModelRx.loginViewState.observeForever(observer)
     }
 
-   /* @Test
+    @Test
     fun testInitialViewStateShowsLoading() {
         Mockito.verify(observer)
             .onChanged(LoginViewStateRx(loginData = null, error = null))
         Mockito.verifyZeroInteractions(observer)
-    }*/
+    }
 
     @Test
     fun onLoginClicked() {
