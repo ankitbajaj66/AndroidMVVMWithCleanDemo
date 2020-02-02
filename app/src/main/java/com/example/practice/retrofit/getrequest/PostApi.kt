@@ -101,4 +101,20 @@ interface PostApi {
     @GET("https://jsonplaceholder.typicode.com/posts?userId=1&_sort=id&_order=desc")
     fun getPostsUsingFullUrl(
     ): Call<List<Post>>
+
+
+    @POST
+    fun createData(@Body post: Post): Call<Post>
+
+    @FormUrlEncoded
+    @POST
+    fun createDataUsingEncoding(
+        @Field("userId") userId: Int,
+        @Field("title") title: String,
+        @Field("body") body: String
+    ): Call<Post>
+
+    @FormUrlEncoded
+    @POST
+    fun createDataUsingMap(@FieldMap map: Map<String, String>): Call<Post>
 }
