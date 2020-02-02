@@ -6,6 +6,9 @@ import retrofit2.http.*
 
 interface PostApi {
 
+
+    // All the data behavior depends on API we are calling
+
     /**
      * 1. Simple end point
      *  https://jsonplaceholder.typicode.com/posts
@@ -107,7 +110,7 @@ interface PostApi {
     fun createData(@Body post: Post): Call<Post>
 
     @FormUrlEncoded
-    @POST
+    @POST("posts")
     fun createDataUsingEncoding(
         @Field("userId") userId: Int,
         @Field("title") title: String,
@@ -115,6 +118,19 @@ interface PostApi {
     ): Call<Post>
 
     @FormUrlEncoded
-    @POST
+    @POST("posts")
     fun createDataUsingMap(@FieldMap map: Map<String, String>): Call<Post>
+
+    // PUT, PATCH, DELETE apply to single element
+
+    // Put Request completly replace the object
+    @PUT("posts/{id}")
+    fun putRequest(@Path("id") id: Int, @Body post: Post): Call<Post>
+
+    // Patch Request completly only update delta
+    @PATCH("posts/{id}")
+    fun patchRequest(@Path("id") id: Int, @Body post: Post): Call<Post>
+
+    @DELETE("posts/{id}")
+    fun deleteRequest(@Path("id") id: Int): Call<Void>
 }
