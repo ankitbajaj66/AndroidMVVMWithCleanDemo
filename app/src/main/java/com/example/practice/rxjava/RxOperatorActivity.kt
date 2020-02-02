@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidmvvmwithcleandemo.R
+import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -127,7 +128,7 @@ class RxOperatorActivity : AppCompatActivity() {
 */
 
 
-        // FlatMap Operator - does not preserved the order
+      /*  // FlatMap Operator - does not preserved the order
         Observable.range(1, 10).flatMap {
             return@flatMap getDataOnInput(it)
         }
@@ -141,8 +142,18 @@ class RxOperatorActivity : AppCompatActivity() {
             return@concatMap getDataOnInput(it)
 
         } .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe {
-            Log.i(LOG, "ConcatMap Map operator " + it)
-        }
+            Log.i(LOG, "ConcatMap operator " + it)
+        }*/
+
+        // debounce
+        Observable.just(1, 1 ,1  ,3, 4).debounce(300 ,TimeUnit.MILLISECONDS)
+            .subscribe {
+                Log.i(LOG, "debounceoperator " + it)
+            }
+
+        // debou
+        
+
     }
 
     fun getDataOnInput(input: Int): Observable<Int> {
