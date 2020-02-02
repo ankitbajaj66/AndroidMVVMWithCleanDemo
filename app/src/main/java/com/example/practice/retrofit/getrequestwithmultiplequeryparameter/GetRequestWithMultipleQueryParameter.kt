@@ -6,6 +6,8 @@ import com.example.androidmvvmwithcleandemo.R
 import com.example.practice.retrofit.getrequest.Post
 
 import com.example.practice.retrofit.getrequest.PostApi
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_get_request_query_parameter.*
 import kotlinx.android.synthetic.main.activity_retrofit_get_request.*
 import kotlinx.android.synthetic.main.activity_retrofit_get_request.retrofit_data
@@ -21,8 +23,9 @@ class GetRequestWithMultipleQueryParameter : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_request_with_multiple_query_parameter)
 
+        val gson = GsonBuilder().serializeNulls().create()
         val retrofit = Retrofit.Builder().baseUrl("https://jsonplaceholder.typicode.com/")
-            .addConverterFactory(GsonConverterFactory.create()).build()
+            .addConverterFactory(GsonConverterFactory.create(gson)).build()
 
         val postApi = retrofit.create(PostApi::class.java)
 
