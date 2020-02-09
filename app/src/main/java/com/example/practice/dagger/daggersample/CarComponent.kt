@@ -1,4 +1,4 @@
-package com.example.practice.daggersample
+package com.example.practice.dagger.daggersample
 
 import dagger.Component
 

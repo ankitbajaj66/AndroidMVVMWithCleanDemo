@@ -1,4 +1,4 @@
-package com.example.practice.daggersample
+package com.example.practice.dagger.daggersample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

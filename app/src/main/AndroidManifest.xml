@@ -11,13 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.practice.daggersample.TestInjectActivity">
+        <activity android:name="com.example.practice.dagger.injectdepusingbuilder.InjectDepUsingBuilderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.practice.dagger.injectdepusingmoduleconstructor.InjectDepUsingModuleConsActivity">
+
+        </activity>
+        <activity android:name="com.example.practice.dagger.daggerbindsanotation.DaggerBindAnotaActivity"></activity>
+        <activity android:name="com.example.practice.dagger.interfacedependancy.InterfaceDepActivity" />
+        <activity android:name="com.example.practice.dagger.daggeroutsidedep.DaggerOutsideDepActivity" />
+        <activity android:name="com.example.practice.dagger.daggersample.TestInjectActivity" />
         <!--
         <activity android:name="com.example.practice.daggerdemo.daggerdemoinject.DaggeConstructorInject">
             <intent-filter>
@@ -27,9 +34,7 @@
             </intent-filter>
         </activity>
         -->
-        <activity android:name="com.example.practice.kotlinscopefunction.KotlinExtensionFunction">
-
-        </activity>
+        <activity android:name="com.example.practice.kotlinscopefunction.KotlinExtensionFunction" />
         <activity android:name="com.example.practice.retrofit.getrequestwithmultiplequeryparameter.GetRequestWithMultipleQueryParameter" />
         <activity android:name="com.example.practice.retrofit.getrequestqueryparameter.GetRequestQueryParameter" />
         <activity android:name="com.example.practice.retrofit.getrequestwithspecificendpoint.RetrofitGetRequestWithSpecificEndPointActivity" />

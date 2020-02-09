@@ -1,4 +1,4 @@
-package com.example.practice.daggersample
+package com.example.practice.dagger.daggersample
 
 import javax.inject.Inject
 
@@ -6,6 +6,8 @@ import javax.inject.Inject
  *Created by Ankit Bajaj on 08-02-2020.
  */
 class Car @Inject constructor(private val wheels: Wheels) {
+
+    lateinit var driver1: Driver
 
     @Inject
     lateinit var engine: Engine
@@ -15,8 +17,8 @@ class Car @Inject constructor(private val wheels: Wheels) {
     }
 
     @Inject
-    fun setDriver(driver: Driver)
-    {
-
+    fun setDriver(driver: Driver) {
+        println("set driver method constructor")
+        driver1 = driver
     }
 }
