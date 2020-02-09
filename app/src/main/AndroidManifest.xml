@@ -11,18 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.practice.kotlinscopefunction.KotlinExtensionFunction">
+        <activity android:name="com.example.practice.daggersample.TestInjectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.practice.retrofit.getrequestwithmultiplequeryparameter.GetRequestWithMultipleQueryParameter"></activity>
-        <activity android:name="com.example.practice.retrofit.getrequestqueryparameter.GetRequestQueryParameter"></activity>
-        <activity android:name="com.example.practice.retrofit.getrequestwithspecificendpoint.RetrofitGetRequestWithSpecificEndPointActivity" />
-        <activity android:name="com.example.practice.retrofit.getrequest.RetrofitGetRequestActivity">
+        <!--
+        <activity android:name="com.example.practice.daggerdemo.daggerdemoinject.DaggeConstructorInject">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        -->
+        <activity android:name="com.example.practice.kotlinscopefunction.KotlinExtensionFunction">
+
+        </activity>
+        <activity android:name="com.example.practice.retrofit.getrequestwithmultiplequeryparameter.GetRequestWithMultipleQueryParameter" />
+        <activity android:name="com.example.practice.retrofit.getrequestqueryparameter.GetRequestQueryParameter" />
+        <activity android:name="com.example.practice.retrofit.getrequestwithspecificendpoint.RetrofitGetRequestWithSpecificEndPointActivity" />
+        <activity android:name="com.example.practice.retrofit.getrequest.RetrofitGetRequestActivity" />
         <activity android:name="com.example.practice.rxjava.RxOperatorActivity" />
         <activity android:name="com.example.practice.rxjava.FirstActivity" />
         <activity android:name="com.example.practice.rxjava.RxBasics">
