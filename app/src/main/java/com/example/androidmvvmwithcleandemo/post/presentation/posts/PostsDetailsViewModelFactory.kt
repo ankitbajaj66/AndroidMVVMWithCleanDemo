@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.androidmvvmwithcleandemo.post.domain.common.Mapper
 import com.example.androidmvvmwithcleandemo.post.domain.entity.PostEntity
-import com.example.androidmvvmwithcleandemo.post.domain.usecase.GetPosts
+import com.example.androidmvvmwithcleandemo.post.domain.usecase.GetPostsUseCase
 import com.example.androidmvvmwithcleandemo.post.presentation.entities.Post
 
 class PostsDetailsViewModelFactory(
-    private val getPosts: GetPosts,
+    private val getPosts: GetPostsUseCase,
     private val mapper: Mapper<PostEntity, Post>
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

@@ -5,20 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.example.practice.dagger.daggerloginexample.BaseApplication"
+        android:name=".post.presentation.common.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.practice.dagger.daggerloginexample.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name="com.example.practice.dagger.daggerloginexample.LoginActivity"></activity>
         <activity android:name="com.example.practice.dagger.subcomponentwithbuilder.SubComponentBuilderActivity">
 
         </activity>
@@ -63,7 +57,13 @@
         -->
         <activity android:name=".testcallback.ui.LoginActivityRx" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".post.presentation.posts.PostsDetailsActivity" />
+        <activity android:name=".post.presentation.posts.PostsDetailsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

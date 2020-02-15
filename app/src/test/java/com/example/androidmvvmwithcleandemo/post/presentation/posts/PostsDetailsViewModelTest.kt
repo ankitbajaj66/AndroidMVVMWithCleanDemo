@@ -4,9 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.androidmvvmwithcleandemo.post.domain.PostRepository
 import com.example.androidmvvmwithcleandemo.post.domain.common.TestTransformer
-import com.example.androidmvvmwithcleandemo.post.domain.common.TestTransformerRx
 import com.example.androidmvvmwithcleandemo.post.domain.entity.PostEntity
-import com.example.androidmvvmwithcleandemo.post.domain.usecase.GetPosts
+import com.example.androidmvvmwithcleandemo.post.domain.usecase.GetPostsUseCase
 import com.example.androidmvvmwithcleandemo.post.presentation.mappers.PostEntityPostMapper
 import io.reactivex.Observable
 import org.junit.After
@@ -43,7 +42,7 @@ class PostsDetailsViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        val getPopularMoviesUseCase = GetPosts(TestTransformer(), postRepository)
+        val getPopularMoviesUseCase = GetPostsUseCase(TestTransformer(), postRepository)
 
         postsDetailsViewModel = PostsDetailsViewModel(getPopularMoviesUseCase, postEntityPostMapper)
         postsDetailsViewModel.viewState.observeForever(observer)

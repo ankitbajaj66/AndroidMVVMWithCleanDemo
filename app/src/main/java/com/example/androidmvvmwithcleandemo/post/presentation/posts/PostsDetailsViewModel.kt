@@ -4,12 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import com.example.androidmvvmwithcleandemo.post.common.utils.Validator
 import com.example.androidmvvmwithcleandemo.post.domain.common.Mapper
 import com.example.androidmvvmwithcleandemo.post.domain.entity.PostEntity
-import com.example.androidmvvmwithcleandemo.post.domain.usecase.GetPosts
+import com.example.androidmvvmwithcleandemo.post.domain.usecase.GetPostsUseCase
 import com.example.androidmvvmwithcleandemo.post.presentation.common.BaseViewModel
 import com.example.androidmvvmwithcleandemo.post.presentation.entities.Post
 
 class PostsDetailsViewModel(
-    private val getPosts: GetPosts,
+    private val getPosts: GetPostsUseCase,
     private val postMapper: Mapper<PostEntity, Post>
 ) : BaseViewModel() {
 

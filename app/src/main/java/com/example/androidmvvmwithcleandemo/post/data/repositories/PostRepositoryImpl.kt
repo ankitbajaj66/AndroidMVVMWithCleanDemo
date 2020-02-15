@@ -4,7 +4,7 @@ import com.example.androidmvvmwithcleandemo.post.domain.PostRepository
 import com.example.androidmvvmwithcleandemo.post.domain.entity.PostEntity
 import io.reactivex.Observable
 
-class PostRepositoryImpl private constructor(
+class PostRepositoryImpl constructor(
     private val networkDataStore: NetworkDataSource,
     private val cachedDataStore: CachedDataSource
 ) :
@@ -13,8 +13,7 @@ class PostRepositoryImpl private constructor(
 
     companion object {
 
-        fun clear()
-        {
+        fun clear() {
             instance = null
         }
 
@@ -35,8 +34,7 @@ class PostRepositoryImpl private constructor(
             if (!isEmpty)
                 return@flatMap cachedDataStore.getPosts()
             else
-                return@flatMap networkDataStore.getPosts().doOnNext {
-                        posts ->
+                return@flatMap networkDataStore.getPosts().doOnNext { posts ->
                     cachedDataStore.saveAll(posts)
                 }
         }

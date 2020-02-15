@@ -6,7 +6,7 @@ import com.example.androidmvvmwithcleandemo.post.domain.common.TransformerRx
 import com.example.androidmvvmwithcleandemo.post.domain.entity.PostEntity
 import io.reactivex.Observable
 
-open class GetPosts(
+open class GetPostsUseCase(
     private val transformer: Transformer<List<PostEntity>>,
     private val repo: PostRepository
 ) : BaseUseCase<List<PostEntity>>(transformer) {
