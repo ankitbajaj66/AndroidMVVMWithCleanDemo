@@ -43,11 +43,9 @@ class PostsDetailsViewModel(
     }
 
     fun onLoginClicked(username: String, password: String) {
-        if (Validator.isUserNameValid(username) && Validator.isPasswordValid(password))
-        {
+        if (Validator.isUserNameValid(username) && Validator.isPasswordValid(password)) {
             getPosts()
         }
-
     }
 
 }

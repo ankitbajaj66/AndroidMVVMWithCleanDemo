@@ -11,7 +11,7 @@ class PostRepositoryImpl constructor(
     PostRepository {
 
 
-    companion object {
+    /*companion object {
 
         fun clear() {
             instance = null
@@ -26,7 +26,7 @@ class PostRepositoryImpl constructor(
                     instance = it
                 }
             }
-    }
+    }*/
 
     override fun getPosts(): Observable<List<PostEntity>> {
 

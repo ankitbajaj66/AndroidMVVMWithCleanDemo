@@ -3,14 +3,12 @@ package com.example.androidmvvmwithcleandemo.post.data.repositories
 import com.example.androidmvvmwithcleandemo.post.domain.entity.PostEntity
 import io.reactivex.Observable
 import org.junit.After
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verify
-import org.mockito.runners.MockitoJUnitRunner
+import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class PostRepositoryImplTest {
@@ -25,13 +23,13 @@ class PostRepositoryImplTest {
 
     @Before
     fun setUp() {
-        repositoryImpl = PostRepositoryImpl.getInstance(networkDataSource, cachedDataSource)
+        repositoryImpl = PostRepositoryImpl(networkDataSource, cachedDataSource)
     }
 
-    @After
+   /* @After
     fun tearDown() {
         PostRepositoryImpl.clear()
-    }
+    }*/
 
     @Test
     fun getPostsWhenCacheISEmpty() {
@@ -50,6 +48,7 @@ class PostRepositoryImplTest {
             posts.size == 5
         }
     }
+
     fun generatePostDataList(): List<PostEntity> {
 
         return (0..4).map {
