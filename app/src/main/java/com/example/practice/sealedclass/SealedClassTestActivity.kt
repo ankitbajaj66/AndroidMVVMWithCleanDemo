@@ -21,11 +21,18 @@ class SealedClassTestActivity : AppCompatActivity() {
             render(it)
         })
 
+//        sealedClassViewModel.fetchFirstThreeStates()
+
         btn_get_values.setOnClickListener {
             sealedClassViewModel.fetchFirstThreeStates()
         }
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        sealedClassViewModel.fetchFirstThreeStates()
+    }
 
     fun render(state: SealedClassViewModel.State) {
         when (state) {
@@ -36,6 +43,6 @@ class SealedClassTestActivity : AppCompatActivity() {
     }
 
     fun display(data: String) {
-        println("values from server "+data)
+        println("values from server " + data)
     }
 }
