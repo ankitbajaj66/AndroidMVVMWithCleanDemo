@@ -12,11 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.practice.dagger.daggerloginexample.LoginActivity"></activity>
-        <activity android:name="com.example.practice.dagger.subcomponentwithbuilder.SubComponentBuilderActivity">
+        <activity android:name="com.example.practice.sealedclass.SealedClassTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name="com.example.practice.dagger.daggersubcomponent.SubComponentActivity"></activity>
+        <activity android:name="com.example.practice.dagger.daggerloginexample.LoginActivity" />
+        <activity android:name="com.example.practice.dagger.subcomponentwithbuilder.SubComponentBuilderActivity"></activity>
+        <activity android:name="com.example.practice.dagger.daggersubcomponent.SubComponentActivity" />
         <activity android:name="com.example.practice.dagger.daggersingleton.DaggerSingleton" />
         <activity android:name="com.example.practice.dagger.injectdepusingbuilder.InjectDepUsingBuilderActivity" />
         <activity android:name="com.example.practice.dagger.injectdepusingmoduleconstructor.InjectDepUsingModuleConsActivity" />
@@ -58,11 +63,7 @@
         <activity android:name=".testcallback.ui.LoginActivityRx" />
         <activity android:name=".MainActivity" />
         <activity android:name=".post.presentation.posts.PostsDetailsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
