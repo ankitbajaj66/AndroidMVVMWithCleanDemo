@@ -20,7 +20,7 @@ class PostRepositoryImpl constructor(
         @Volatile
         private var instance: PostRepositoryImpl? = null
 
-        fun getInstance(networkDataStore: NetworkDataSource, cachedDataStore: CachedDataSource) =
+        fun newInstance(networkDataStore: NetworkDataSource, cachedDataStore: CachedDataSource) =
             instance ?: synchronized(this) {
                 instance ?: PostRepositoryImpl(networkDataStore, cachedDataStore).also {
                     instance = it

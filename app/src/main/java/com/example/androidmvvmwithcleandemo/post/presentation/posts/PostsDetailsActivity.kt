@@ -48,7 +48,7 @@ class PostsDetailsActivity : AppCompatActivity() {
         val cachedDataSource = CachedDataSourceImpl()
 
         // Repository
-        val repo = PostRepositoryImpl.getInstance(networkDataSource, cachedDataSource)
+        val repo = PostRepositoryImpl.newInstance(networkDataSource, cachedDataSource)
 
         // Transformer
         val asyncTransformer = AsyncTransformer<List<PostEntity>>()
