@@ -20,8 +20,13 @@ class ConfirmationFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        recipientName = arguments!!.getString("recipient")
-        money = arguments!!.getParcelable("amount")
+        arguments?.let {
+            val confirmationFragmentArgs = ConfirmationFragmentArgs.fromBundle(it)
+            recipientName = confirmationFragmentArgs.recipient
+            money = confirmationFragmentArgs.amount
+        }
+//        recipientName = arguments!!.getString("recipient")
+//        money = arguments!!.getParcelable("amount")
 
     }
 

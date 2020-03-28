@@ -36,11 +36,17 @@ class ChooseRecipientFragment : Fragment() {
 
         next_btn.setOnClickListener {
             if (!TextUtils.isEmpty(input_recipient.text.toString())) {
-                val bundle = bundleOf("recipient" to input_recipient.text.toString())
+               /* val bundle = bundleOf("recipient" to input_recipient.text.toString())
                 navController.navigate(
                     R.id.action_chooseRecipientFragment_to_specifyAmountFragment,
                     bundle
-                )
+                )*/
+
+                val action: ChooseRecipientFragmentDirections.ActionChooseRecipientFragmentToSpecifyAmountFragment =
+                    ChooseRecipientFragmentDirections.actionChooseRecipientFragmentToSpecifyAmountFragment()
+                action.recipient = input_recipient.text.toString()
+                navController.navigate(action)
+
             } else {
                 Toast.makeText(activity, "Please Enter Recipient Name", Toast.LENGTH_LONG).show()
             }

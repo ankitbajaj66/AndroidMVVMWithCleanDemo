@@ -18,6 +18,19 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!--Created Deep Link to launch app
+            http://testapp.io-->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="testapp.io"
+                    android:scheme="http"/>
+            </intent-filter>
         </activity>
         <activity android:name="com.example.uitestpractice.intenttest.ImplicitIntentDemoActivity"></activity>
         <activity android:name="com.example.practice.fragmentsdemo.fragmentfactorydemo.HostActivity" />

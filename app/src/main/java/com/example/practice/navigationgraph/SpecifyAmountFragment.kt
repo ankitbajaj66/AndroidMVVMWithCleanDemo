@@ -28,6 +28,12 @@ class SpecifyAmountFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         recipientName = arguments!!.getString("recipient")
+
+        arguments?.let {
+            val specifyAmountFragmentArgs = SpecifyAmountFragmentArgs.fromBundle(it)
+            recipientName = specifyAmountFragmentArgs.recipient
+        }
+
     }
 
     override fun onCreateView(
@@ -47,11 +53,19 @@ class SpecifyAmountFragment : Fragment() {
         send_btn.setOnClickListener {
             if (!TextUtils.isEmpty(input_amount.text.toString())) {
                 val amount = Money(BigDecimal(input_amount.text.toString()))
-                val bundle = bundleOf("recipient" to recipientName, "amount" to amount)
+                /*val bundle = bundleOf("recipient" to recipientName, "amount" to amount)
                 navController.navigate(
                     R.id.action_specifyAmountFragment_to_confirmationFragment,
                     bundle
-                )
+                )*/
+
+                val action: SpecifyAmountFragmentDirections.ActionSpecifyAmountFragmentToConfirmationFragment =
+                    SpecifyAmountFragmentDirections.actionSpecifyAmountFragmentToConfirmationFragment(
+                        amount
+                    )
+                action.recipient = recipientName
+
+                navController.navigate(action)
             } else {
                 Toast.makeText(activity, "Please Enter Amount", Toast.LENGTH_LONG).show()
             }
